@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 
 const app= express();
 const port =3000;
-let name, regno , age, dept, location , rows , cols;
+let formData = {};
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
@@ -13,18 +13,25 @@ app.get("/",(req,res)=>{
 });
 
 app.post("/home",(req,res)=>{
-    name = req.body.name;
-    regno = req.body.regno;
-    age= req.body.age;
-    location = req.body.location;
-    dept = req.body.dept;
-    const formdata = req.body;
+    formData = {
+        name: req.body.name,
+        regno: req.body.regno,
+        age: req.body.age,
+        location: req.body.location,
+        dept: req.body.dept
+    };
     res.render("home.ejs");
-
 });
 
 app.post("/form",(req,res)=>{
-    res.render("table.ejs");
+    console.log(formData);
+    const row = req.body.row;
+    const col = req.body.col;   
+    res.render("table.ejs",{
+        data : formData,
+        rows : row,
+        cols : col,
+    });
 });
 
 app.get("/end",(req,res)=>{

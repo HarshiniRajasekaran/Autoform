@@ -12,7 +12,6 @@
     <h2>Student Information Table</h2>
     <div class="create">
         <table>
-        
             <thead>
                 <tr>
                     <th>Name</th>
@@ -20,16 +19,34 @@
                     <th>Age</th>
                     <th>Location</th>
                     <th>Department</th>
+                    <% for(var a=0;a<cols-5;a++) {%>
+                        <th> </th>
+                    <% } %>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Jhon smith</td>
-                    <td>125018029</td>
-                    <td>20</td>
-                    <td>Trichy</td>
-                    <td>Computer Science</td>
+                    <td><%= data.name %></td>
+                    <td><%= data.regno %></td>
+                    <td><%= data.age %></td>
+                    <td><%= data.location %></td>
+                    <td><%= data.dept %></td>
+                    <% for (var i=0;i<cols-5;i++) {%>
+                        <td></td>
+                    <% } %>
                 </tr>
+                <% for(var i =0 ; i<rows-1;i++) {%>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <% for (var j=0;j<cols-5;j++) {%>
+                            <td></td>
+                        <% } %>
+                    </tr>
+                <% } %>
             </tbody>
             
         </table>
