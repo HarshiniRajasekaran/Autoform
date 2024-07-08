@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="../style/home.css" rel="stylesheet">
+</head>
+<body>
+    <fieldset>
+    <legend>Enter Values:</legend>
+    <form id="rowcolform" action="/form" method="post">
+        <div class="form-group">
+            <label>Enter Number of Rows:</label>
+            <input type="number" required id="row"/>
+            <span class="error-message" id="row-error">rows is required</span>
+        </div>
+        <div class="form-group">
+            <label>Enter Number of Columns:</label>
+            <input type="number" required id="col"/> 
+            <span class="error-message" id="col-error">columns is required</span> 
+        </div>
+        
+        <input type="submit" value="SUBMIT" "  />
+        <span class="success-message" id="success-message">Form submitted successfully!</span>
+    </form> 
+    </fieldset>
+    <script>
+        function validateForm() {
+          const rowno = document.getElementById("row").value.trim();
+          const colno = document.getElementById("col").value.trim();
+  
+          let isValid = true;
+
+          if (rowno === ""|| rowno < 1) {
+            document.getElementById("row").classList.add("invalid");
+            document.getElementById("row-error").style.display = "block";
+            isValid = false;
+          } else {
+            document.getElementById("row").classList.remove("invalid");
+            document.getElementById("row-error").style.display = "none";
+          }
+
+          if (colno === ""|| rowno < 1) {
+            document.getElementById("col").classList.add("invalid");
+            document.getElementById("col-error").style.display = "block";
+            isValid = false;
+          } else {
+            document.getElementById("col").classList.remove("invalid");
+            document.getElementById("col-error").style.display = "none";
+          }
+
+          if (isValid) {
+            document.getElementById("success-message").style.display = "block";
+            document.getElementById("rowcolform").reset();
+          } else {
+            document.getElementById("success-message").style.display = "none";
+          }
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <link href="../style/form.css" rel="stylesheet">
+</head>
+<body>
+    <fieldset>
+        <legend>Enter the following details</legend>
+            
+            <form id="registrationForm" action="/home" method="post">
+          <div class="form-group">
+            <label>Enter your name:</label>
+            <input type="text" required id="name" name="name" />
+            <span class="error-message" id="name-error">Name is required</span>
+          </div>
+          <div class="form-group">
+            <label>Enter your registration number:</label>
+            <input type="text" required id="no" name="regno" />
+            <span class="error-message" id="no-error">Valid registration number (alphabets and numbers only) is required</span>
+          </div>
+          <div class="form-group">
+            <label>Enter your age:</label>
+            <input type="text" required id="age" name="age"/>
+            <span class="error-message" id="age-error">Valid age is required</span>
+          </div>
+          <div class="form-group">
+            <label>Enter your location:</label>
+            <input type="text" required id="address" name="location" />
+            <span class="error-message" id="address-error">Location is required</span>
+          </div>
+          <div class="form-group">
+            <label>Choose department:</label>
+            <select name="dept" id="dept-select">
+              <option value="">Please choose an option</option>
+              <option value="cse">CSE</option>
+              <option value="eee">EEE</option>
+              <option value="ece">ECE</option>
+              <option value="ecm">ECM</option>
+              <option value="mech">Mech</option>
+            </select>
+            <span class="error-message" id="dept-error">Department is required</span>
+          </div>
+          <input type="submit" value="SUBMIT"/>
+          <span class="success-message" id="success-message">Form submitted successfully!</span>
+        </form>
+      </fieldset>
+      <script>
+        function validateForm() {
+          const name = document.getElementById("name").value.trim();
+          const regNo = document.getElementById("no").value.trim();
+          const age = document.getElementById("age").value.trim();
+          const address = document.getElementById("address").value.trim();
+          const dept = document.getElementById("dept-select").value;
+  
+          let isValid = true;
+  
+          if (name === "") {
+            document.getElementById("name").classList.add("invalid");
+            document.getElementById("name-error").style.display = "block";
+            isValid = false;
+          } else {
+            document.getElementById("name").classList.remove("invalid");
+            document.getElementById("name-error").style.display = "none";
+          }
+  
+          if (regNo === "" || !/^[a-zA-Z0-9]+$/.test(regNo)) {
+            document.getElementById("no").classList.add("invalid");
+            document.getElementById("no-error").style.display = "block";
+            isValid = false;
+          } else {
+            document.getElementById("no").classList.remove("invalid");
+            document.getElementById("no-error").style.display = "none";
+          }
+  
+          if (age === "" || isNaN(age) || age < 1) {
+            document.getElementById("age").classList.add("invalid");
+            document.getElementById("age-error").style.display = "block";
+            isValid = false;
+          } else {
+            document.getElementById("age").classList.remove("invalid");
+            document.getElementById("age-error").style.display = "none";
+          }
+  
+          if (address === "") {
+            document.getElementById("address").classList.add("invalid");
+            document.getElementById("address-error").style.display = "block";
+            isValid = false;
+          } else {
+            document.getElementById("address").classList.remove("invalid");
+            document.getElementById("address-error").style.display = "none";
+          }
+  
+          if (dept === "") {
+            document.getElementById("dept-select").classList.add("invalid");
+            document.getElementById("dept-error").style.display = "block";
+            isValid = false;
+          } else {
+            document.getElementById("dept-select").classList.remove("invalid");
+            document.getElementById("dept-error").style.display = "none";
+          }
+  
+          if (isValid) {
+            document.getElementById("success-message").style.display = "block";
+            document.getElementById("registrationForm").reset();
+          } else {
+            document.getElementById("success-message").style.display = "none";
+          }
+        }
+      </script>
+    </body>
+  </html>
+</body>
+</html>
